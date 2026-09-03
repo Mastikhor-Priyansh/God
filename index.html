@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#170c12">
+<meta name="description" content="Divine Gods — a peaceful devotional experience celebrating Ganesh, Radha Krishna, Mahadev Parvati and Hanuman.">
+<title>Divine Gods — Temple of Light</title>
+<style>
+:root{
+  --gold:#e6bd68;--gold2:#fff0b4;--pink:#e88ba7;--cream:#fff6df;
+  --maroon:#4b1626;--ink:#120b10;--blue:#101b3d;--saffron:#c76522;
+  --glass:rgba(255,245,225,.09);--line:rgba(255,219,137,.35);
+  --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#100a0e;color:var(--cream);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+button,a{font:inherit}
+button{cursor:pointer}
+#app{min-height:100vh}
+.page{display:none;min-height:100vh;position:relative;overflow:hidden}
+.page.active{display:block;animation:pageIn 1s ease both}
+@keyframes pageIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.bg:before{content:"";position:absolute;inset:-20%;background:
+ radial-gradient(circle at 50% 35%,rgba(255,196,91,.25),transparent 22%),
+ radial-gradient(circle at 20% 80%,rgba(232,139,167,.12),transparent 28%),
+ linear-gradient(135deg,#140b10,#29131d 50%,#0b080c);filter:saturate(1.05)}
+.mandala{position:absolute;width:min(80vw,760px);aspect-ratio:1;border:1px solid rgba(255,218,145,.16);border-radius:50%;left:50%;top:43%;transform:translate(-50%,-50%);box-shadow:0 0 0 28px rgba(255,214,126,.025),0 0 0 58px rgba(255,214,126,.018);animation:spin 60s linear infinite}
+.mandala:before,.mandala:after{content:"";position:absolute;inset:9%;border:1px dashed rgba(255,218,145,.13);border-radius:50%}
+.mandala:after{inset:20%;transform:rotate(45deg);border-style:solid}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.grain{position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,54px);background:linear-gradient(to bottom,rgba(8,5,7,.65),transparent);pointer-events:none}
+.brand{letter-spacing:.22em;font-size:12px;color:var(--gold2);text-transform:uppercase}
+.nav{display:flex;gap:7px;pointer-events:auto}
+.nav button{border:1px solid rgba(255,219,137,.2);background:rgba(15,8,12,.4);color:#fff1ce;padding:8px 12px;border-radius:999px;font-size:12px;backdrop-filter:blur(10px)}
+.nav button:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(230,189,104,.18)}
+.hero{position:relative;z-index:2;min-height:100vh;display:grid;place-items:center;padding:110px 20px 60px;text-align:center}
+.hero-inner{max-width:1100px}
+.kicker{font-size:12px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+h1{font-size:clamp(52px,10vw,122px);line-height:.9;margin:0;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 0 35px rgba(255,205,112,.18)}
+.lead{font-size:clamp(16px,2vw,22px);line-height:1.65;color:#f6dfbf;margin:28px auto 40px;max-width:700px}
+.gold-line{height:1px;width:160px;margin:0 auto 28px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:42px auto 0;max-width:1100px;text-align:left}
+.card{position:relative;min-height:390px;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:rgba(30,14,21,.55);box-shadow:var(--shadow);transition:.55s cubic-bezier(.2,.8,.2,1);isolation:isolate}
+.card:hover{transform:translateY(-10px);box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 40px rgba(230,189,104,.13)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:1s ease}
+.card:hover img{transform:scale(1.07)}
+.card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(8,4,8,.95),rgba(8,4,8,.1) 65%,rgba(255,200,100,.05))}
+.card-body{position:absolute;inset:auto 0 0;padding:22px}
+.card h2{font-size:23px;margin:0 0 6px;color:#fff4d4}
+.card p{margin:0 0 18px;color:#efcfa8;font-size:14px}
+.explore{border:0;border-bottom:1px solid var(--gold);background:none;color:var(--gold2);padding:5px 0;letter-spacing:.15em;font-size:11px;text-transform:uppercase}
+.petal{position:absolute;width:12px;height:18px;background:rgba(255,160,190,.65);border-radius:100% 0 100% 0;animation:fall linear infinite;filter:blur(.1px)}
+@keyframes fall{from{transform:translate3d(0,-12vh,0) rotate(0)}to{transform:translate3d(90px,112vh,0) rotate(540deg)}}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px 3px rgba(255,210,115,.35);animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-35px);opacity:.45}}
+.footer{padding:35px 20px 55px;text-align:center;color:#dcbf96;font-size:13px;letter-spacing:.08em}
+.detail .bg:before{background:radial-gradient(circle at 50% 34%,var(--aura,rgba(255,190,80,.26)),transparent 25%),linear-gradient(145deg,var(--bg1,#140b10),var(--bg2,#2b1320) 55%,#09070a)}
+.detail-main{position:relative;z-index:2;min-height:100vh;display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,.85fr);align-items:center;gap:clamp(25px,6vw,90px);max-width:1250px;margin:auto;padding:110px 5vw 70px}
+.visual{position:relative;display:grid;place-items:center;min-height:650px}
+.aura{position:absolute;width:min(70vw,620px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,222,147,.36),rgba(255,183,88,.08) 42%,transparent 70%);filter:blur(3px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}
+.deity{position:relative;z-index:2;width:min(88%,520px);max-height:75vh;object-fit:contain;border-radius:24px;filter:drop-shadow(0 25px 35px rgba(0,0,0,.5));animation:deityIn 1.5s cubic-bezier(.2,.8,.2,1) both, breathe 7s ease-in-out 1.5s infinite}
+@keyframes deityIn{from{opacity:0;transform:scale(.93) translateY(22px)}to{opacity:1;transform:none}}
+@keyframes breathe{50%{transform:scale(1.012) translateY(-4px)}}
+.content{max-width:610px}
+.back{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,219,137,.3);background:rgba(20,10,15,.35);color:#f8dfb5;border-radius:999px;padding:10px 15px;margin-bottom:30px;backdrop-filter:blur(10px)}
+.detail h1{font-size:clamp(45px,7vw,88px);text-transform:none;letter-spacing:.01em}
+.subtitle{color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:12px;margin:15px 0 28px}
+.shlok{font-size:clamp(18px,2.2vw,25px);line-height:1.9;color:#fff1d1;padding:24px 0;border-top:1px solid rgba(255,219,137,.22);border-bottom:1px solid rgba(255,219,137,.22);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.mantra{display:inline-block;margin:24px 0;font-size:26px;color:var(--gold2);text-shadow:0 0 24px rgba(255,206,102,.45);animation:mantra 3s ease-in-out infinite}
+@keyframes mantra{50%{text-shadow:0 0 34px rgba(255,206,102,.8)}}
+.quote{font-size:19px;line-height:1.7;color:#efd4b0;font-style:italic}
+.action{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);background:linear-gradient(135deg,rgba(230,189,104,.2),rgba(232,139,167,.12));color:#fff2cd;padding:13px 20px;border-radius:999px;margin-top:18px;box-shadow:0 0 25px rgba(230,189,104,.08)}
+.action:active{transform:scale(.98)}
+.notice{min-height:24px;margin-top:14px;color:#ffdca4;font-size:14px;opacity:0;transition:.5s}
+.notice.show{opacity:1}
+.corner{position:absolute;width:90px;height:90px;border:1px solid rgba(255,219,137,.2);opacity:.7}
+.c1{top:100px;left:30px;border-right:0;border-bottom:0}.c2{bottom:35px;right:30px;border-left:0;border-top:0}
+@media(max-width:900px){
+  .nav{display:none}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .detail-main{grid-template-columns:1fr;text-align:center;padding-top:105px}
+  .visual{min-height:480px;order:0}.content{margin:auto}.detail .back{margin-bottom:18px}
+}
+@media(max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .card{min-height:440px}
+  .hero{padding-top:90px}
+  .visual{min-height:410px}
+  .deity{width:94%;max-height:58vh}
+  .shlok{font-size:18px}
+  .corner{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">Divine Gods · Temple of Light</div>
+    <nav class="nav" aria-label="Main navigation">
+      <button data-go="home">Home</button>
+      <button data-go="ganesh">Ganesh</button>
+      <button data-go="krishna-radha">Radha Krishna</button>
+      <button data-go="mahadev-parvati">Mahadev</button>
+      <button data-go="hanuman">Hanuman</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="bg"><div class="mandala"></div><div class="grain"></div></div>
+      <div id="particles-home"></div>
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="kicker">A Digital Temple of Light</div>
+          <h1>Divine Gods</h1>
+          <div class="gold-line"></div>
+          <p class="lead">Four forms of divinity.<br>Four paths of devotion.<br><em>One eternal light.</em></p>
+          <div class="cards">
+            <article class="card" data-go="ganesh" tabindex="0">
+              <img src="ganesh.png" alt="Shri Ganesh Ji devotional artwork" loading="eager">
+              <div class="card-body"><h2>Ganesh Ji</h2><p>विघ्नहर्ता · शुभारंभ</p><button class="explore" data-go="ganesh">Explore →</button></div>
+            </article>
+            <article class="card" data-go="krishna-radha" tabindex="0">
+              <img src="radhakrishn.png" alt="Radha Krishna devotional artwork" loading="eager">
+              <div class="card-body"><h2>Krishna &amp; Radha</h2><p>प्रेम · भक्ति · अनंत</p><button class="explore" data-go="krishna-radha">Explore →</button></div>
+            </article>
+            <article class="card" data-go="mahadev-parvati" tabindex="0">
+              <img src="mahadevparvati.png" alt="Mahadev and Maa Parvati devotional artwork" loading="eager">
+              <div class="card-body"><h2>Mahadev &amp; Parvati</h2><p>शिव · शक्ति · सनातन</p><button class="explore" data-go="mahadev-parvati">Explore →</button></div>
+            </article>
+            <article class="card" data-go="hanuman" tabindex="0">
+              <img src="hanuman.png" alt="Shri Hanuman Ji devotional artwork" loading="eager">
+              <div class="card-body"><h2>Hanuman Ji</h2><p>भक्ति · शक्ति · साहस</p><button class="explore" data-go="hanuman">Explore →</button></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="footer">॥ सर्वे भवन्तु सुखिनः ॥<br><br>May peace, devotion and love illuminate every heart.</div>
+    </section>
+
+    <section id="ganesh" class="page detail" style="--aura:rgba(255,190,75,.30);--bg1:#12090c;--bg2:#4b1b1d">
+      <div class="bg"><div class="mandala"></div><div class="grain"></div></div><div class="corner c1"></div><div class="corner c2"></div>
+      <div class="detail-main">
+        <div class="visual"><div class="aura"></div><img class="deity" src="ganesh.png" alt="Shri Ganesh Ji"></div>
+        <div class="content">
+          <button class="back" data-go="home">← Back to Divine Gods</button>
+          <div class="kicker">शुभारंभ · मंगलमूर्ति</div><h1>श्री गणेश</h1>
+          <div class="subtitle">Remover of Obstacles · Lord of Beginnings</div>
+          <div class="shlok">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा॥</div>
+          <div class="mantra">ॐ गं गणपतये नमः</div>
+          <br><button class="action prayer" data-message="श्री गणेश जी की कृपा सदा बनी रहे।">✦ प्रार्थना करें</button>
+          <div class="notice"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="krishna-radha" class="page detail" style="--aura:rgba(102,119,255,.27);--bg1:#070a1a;--bg2:#25133c">
+      <div class="bg"><div class="mandala"></div><div class="grain"></div></div><div class="corner c1"></div><div class="corner c2"></div>
+      <div class="detail-main">
+        <div class="visual"><div class="aura"></div><img class="deity" src="radhakrishn.png" alt="Radha Krishna devotional artwork"></div>
+        <div class="content">
+          <button class="back" data-go="home">← Back to Divine Gods</button>
+          <div class="kicker">प्रेम · भक्ति · अनंत</div><h1>राधा कृष्ण</h1>
+          <div class="subtitle">Divine Love · Devotion · Eternity</div>
+          <div class="shlok">ॐ कृष्णाय वासुदेवाय हरये परमात्मने।<br>प्रणतः क्लेशनाशाय गोविन्दाय नमो नमः॥</div>
+          <div class="mantra">राधे राधे</div>
+          <p class="quote">“जहाँ प्रेम में भक्ति हो,<br>वहीं राधा-कृष्ण का वास है।”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mahadev-parvati" class="page detail" style="--aura:rgba(198,219,255,.27);--bg1:#09101b;--bg2:#332031">
+      <div class="bg"><div class="mandala"></div><div class="grain"></div></div><div class="corner c1"></div><div class="corner c2"></div>
+      <div class="detail-main">
+        <div class="visual"><div class="aura"></div><img class="deity" src="mahadevparvati.png" alt="Mahadev and Maa Parvati devotional artwork"></div>
+        <div class="content">
+          <button class="back" data-go="home">← Back to Divine Gods</button>
+          <div class="kicker">शिव · शक्ति · सनातन</div><h1>महादेव &amp; पार्वती</h1>
+          <div class="subtitle">Shiva · Shakti · Eternal Union</div>
+          <div class="shlok">ॐ नमः शिवाय<br><br>ॐ पार्वत्यै नमः</div>
+          <p class="quote">“शिव बिना शक्ति अधूरे हैं,<br>और शक्ति बिना शिव।”</p>
+          <div class="mantra">𑁍  ॐ 𑁍</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hanuman" class="page detail" style="--aura:rgba(255,155,45,.31);--bg1:#1b0b08;--bg2:#5b2514">
+      <div class="bg"><div class="mandala"></div><div class="grain"></div></div><div class="corner c1"></div><div class="corner c2"></div>
+      <div class="detail-main">
+        <div class="visual"><div class="aura"></div><img class="deity" src="hanuman.png" alt="Shri Hanuman Ji devotional artwork"></div>
+        <div class="content">
+          <button class="back" data-go="home">← Back to Divine Gods</button>
+          <div class="kicker">भक्ति · शक्ति · साहस</div><h1>श्री हनुमान</h1>
+          <div class="subtitle">Devotion · Strength · Courage</div>
+          <div class="shlok">मनोजवं मारुततुल्यवेगं<br>जितेन्द्रियं बुद्धिमतां वरिष्ठम्।<br>वातात्मजं वानरयूथमुख्यं<br>श्रीरामदूतं शरणं प्रपद्ये॥</div>
+          <div class="mantra">ॐ हनुमते नमः</div>
+          <br><button class="action prayer" data-message="श्री राम भक्त हनुमान जी की कृपा बनी रहे।">✦ जय श्री राम</button>
+          <div class="notice"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const routes=["home","ganesh","krishna-radha","mahadev-parvati","hanuman"];
+
+function makeParticles(){
+  const targets=document.querySelectorAll("#particles-home,.detail");
+  targets.forEach(target=>{
+    const count=target.id==="particles-home"?34:18;
+    const box=document.createElement("div");
+    for(let i=0;i<count;i++){
+      const p=document.createElement("span");
+      p.className=Math.random()>.35?"particle":"petal";
+      p.style.left=(Math.random()*100)+"%";
+      p.style.top=(Math.random()*100)+"%";
+      p.style.animationDelay=(-Math.random()*8)+"s";
+      p.style.animationDuration=(4+Math.random()*8)+"s";
+      if(p.className==="petal") p.style.transform=`rotate(${Math.random()*360}deg)`;
+      box.appendChild(p);
+    }
+    target.appendChild(box);
+  });
+}
+
+function showRoute(route, push=true){
+  if(!routes.includes(route)) route="home";
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===route));
+  if(push && location.hash.slice(1)!==route) history.pushState({route}, "", "#"+route);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-go]");
+  if(el){e.preventDefault();showRoute(el.dataset.go);}
+  const prayer=e.target.closest(".prayer");
+  if(prayer){
+    const page=prayer.closest(".page");
+    const notice=page.querySelector(".notice");
+    notice.textContent=prayer.dataset.message;
+    notice.classList.add("show");
+    for(let i=0;i<18;i++){
+      const p=document.createElement("span");
+      p.className="particle";
+      p.style.left=(35+Math.random()*30)+"%";
+      p.style.top=(35+Math.random()*25)+"%";
+      p.style.animationDuration=(1.2+Math.random()*1.8)+"s";
+      p.style.animationName="float";
+      page.querySelector(".visual").appendChild(p);
+      setTimeout(()=>p.remove(),2500);
+    }
+    setTimeout(()=>notice.classList.remove("show"),4200);
+  }
+});
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showRoute(card.dataset.go);}});
+});
+window.addEventListener("popstate",()=>showRoute(location.hash.slice(1)||"home",false));
+window.addEventListener("hashchange",()=>showRoute(location.hash.slice(1)||"home",false));
+makeParticles();
+showRoute(location.hash.slice(1)||"home",false);
+</script>
+</body>
+</html>
