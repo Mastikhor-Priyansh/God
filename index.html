@@ -43,6 +43,12 @@ button{font:inherit;cursor:pointer}
 .deity{position:relative;z-index:2;width:min(92%,540px);max-height:72vh;object-fit:contain;border-radius:22px;filter:drop-shadow(0 22px 30px #0008);animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-5px)}}
 .content{max-width:610px}.detail h1{font-size:clamp(45px,7vw,82px);line-height:1;margin:0}.subtitle{font:11px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:15px 0 25px}.shlok{font-size:clamp(18px,2vw,24px);line-height:1.85;color:#fff0d1;padding:22px 0;border-top:1px solid #e8c56f38;border-bottom:1px solid #e8c56f38}.mantra{display:inline-block;color:var(--gold2);font-size:26px;margin:20px 0;text-shadow:0 0 20px #e8c56f55}.quote{font-size:18px;line-height:1.7;color:#efd3af;font-style:italic}.story{margin-top:28px;padding:24px;border:1px solid #e8c56f30;border-radius:18px;background:#fff4e90a}.story h2{font-size:22px;margin:0 0 12px;color:var(--gold2)}.story p{font-size:15px;line-height:1.8;color:#ecd5b9;margin:0 0 12px}.story p:last-child{margin-bottom:0}.action{border:1px solid var(--gold);background:#e8c56f14;color:#fff0ca;padding:12px 18px;border-radius:999px}.notice{min-height:22px;color:var(--gold);font-size:13px;margin-top:12px;opacity:0;transition:opacity .3s}.notice.show{opacity:1}
+.voice-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
+.voice-btn{border:1px solid var(--gold);background:#e8c56f18;color:#fff0ca;padding:11px 16px;border-radius:999px;font-size:13px}
+.voice-btn:hover{background:#e8c56f2b}
+.voice-speed{border:1px solid #e8c56f55;background:#140b10cc;color:#ffe9ba;padding:10px 12px;border-radius:999px;font-size:12px}
+.voice-status{width:100%;min-height:18px;color:#d8ba91;font:12px Arial,sans-serif;opacity:.9}
+
 @media(max-width:900px){.nav{display:none}.cards{grid-template-columns:repeat(2,1fr)}.detail-main{grid-template-columns:1fr;text-align:center;padding-top:95px}.content{margin:auto}.visual{min-height:470px}.story{text-align:left}}
 @media(max-width:560px){.cards{grid-template-columns:1fr}.card{height:430px}.visual{min-height:390px}.deity{width:96%;max-height:55vh}.shlok{font-size:18px}.story{padding:20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -61,9 +67,9 @@ button{font:inherit;cursor:pointer}
 <p class="lead">Four forms of divinity.<br>Four paths of devotion.<br><em>One eternal light.</em></p>
 <div class="cards">
 <article class="card" data-go="ganesh" tabindex="0"><img src="ganesh.jpg" alt="Shri Ganesh Ji"><div class="card-body"><h2>Ganesh Ji</h2><p>विघ्नहर्ता · शुभारंभ</p><span class="explore">Explore →</span></div></article>
-<article class="card" data-go="krishna-radha" tabindex="0"><img src="radhakrishn.jpg" alt="Radha Krishna"><div class="card-body"><h2>Krishna &amp; Radha</h2><p>प्रेम · भक्ति · अनंत</p><span class="explore">Explore →</span></div></article>
-<article class="card" data-go="mahadev-parvati" tabindex="0"><img src="mahadevparvati.jpg" alt="Mahadev and Parvati"><div class="card-body"><h2>Mahadev &amp; Parvati</h2><p>शिव · शक्ति · सनातन</p><span class="explore">Explore →</span></div></article>
-<article class="card" data-go="hanuman" tabindex="0"><img src="hanuman.jpg" alt="Shri Hanuman Ji"><div class="card-body"><h2>Hanuman Ji</h2><p>भक्ति · शक्ति · साहस</p><span class="explore">Explore →</span></div></article>
+<article class="card" data-go="krishna-radha" tabindex="0"><img src="radhakrishn.jpg" alt="Radha Krishna"><div class="card-body"><h2>Krishna &amp; Radha</h2><p>Prem · Bhakti · Anant</p><span class="explore">Explore →</span></div></article>
+<article class="card" data-go="mahadev-parvati" tabindex="0"><img src="mahadevparvati.jpg" alt="Mahadev and Parvati"><div class="card-body"><h2>Mahadev &amp; Parvati</h2><p>Shiv · Shakti · Sanaatan</p><span class="explore">Explore →</span></div></article>
+<article class="card" data-go="hanuman" tabindex="0"><img src="hanuman.jpg" alt="Shri Hanuman Ji"><div class="card-body"><h2>Hanuman Ji</h2><p>Bhakti · Shakti · Saahas</p><span class="explore">Explore →</span></div></article>
 </div>
 </div>
 <div class="footer">॥ सर्वे भवन्तु सुखिनः ॥<br><br>May peace, devotion and love illuminate every heart.</div>
@@ -72,64 +78,191 @@ button{font:inherit;cursor:pointer}
 <section id="ganesh" class="page detail" style="--glow:#f4ad6628;--bg1:#17090d;--bg2:#4c171e">
 <div class="bg"><div class="mandala"></div></div>
 <div class="detail-main"><div class="visual"><div class="aura"></div><img class="deity" src="ganesh.jpg" alt="Shri Ganesh Ji"></div>
-<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">शुभारंभ · मंगलमूर्ति</div><h1>श्री गणेश</h1><div class="subtitle">Remover of Obstacles · Lord of Beginnings</div>
-<div class="shlok">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा॥</div>
-<div class="mantra">ॐ गं गणपतये नमः</div><br><button class="action" data-message="श्री गणेश जी की कृपा सदा बनी रहे।">✦ प्रार्थना करें</button><div class="notice"></div>
-<div class="story"><h2>श्री गणेश की कथा</h2><p>हिंदू परंपरा में गणेश जी को आरंभ, बुद्धि और मंगल के देवता के रूप में श्रद्धा से स्मरण किया जाता है। किसी शुभ कार्य से पहले उनका स्मरण करने की परंपरा बहुत व्यापक है।</p><p>पुराणिक कथाओं में माता पार्वती द्वारा गणेश जी के प्राकट्य और उनके शिव जी से पुनर्मिलन की कथा विशेष रूप से प्रसिद्ध है। यह कथा माता-पिता के प्रति प्रेम, कर्तव्य और समर्पण का भाव प्रस्तुत करती है।</p></div>
+<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">Shubharambh · Mangalmurti</div><h1>Shri Ganesh</h1><div class="subtitle">Vighnaharta · Shubh Aarambh ke Dev</div>
+<div class="shlok" data-shlok="Vakratunda Mahakaaya Suryakoti Samaprabha. Nirvighnam Kuru Me Deva Shubhkaaryeshu Sarvadaa.">Vakratunda Mahakaaya Suryakoti Samaprabha.<br>Nirvighnam Kuru Me Deva Shubhkaaryeshu Sarvadaa.</div><div class="voice-controls"><button type="button" class="voice-btn" data-voice="play">🔊 Sunein Shlok</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div>
+<div class="mantra">Om Gan Ganapataye Namah</div><br><button class="action" data-message="Shri Ganesh जी की कृपा सदा बनी रहे।">✦ Prarthana Karein</button><div class="notice"></div>
+<div class="story" data-katha="Shri Ganesh की कथा Hindu parampara mein Ganesh ji ko aarambh, buddhi aur mangal ke devta ke roop mein shraddha se smaran kiya jaata hai. Kisi shubh kaarya se pehle unka smaran karne ki parampara bahut vyaapak hai. Pauranik kathaaon mein Mata Parvati dwaara Ganesh ji ke praakatya aur unke Shiv ji se punarmilan ki katha vishesh roop se prasiddh hai. Yeh katha mata-pita ke prati prem, kartavya aur samarpan ka bhaav prastut karti hai."><h2>Shri Ganesh की कथा</h2><p>Hindu parampara mein Ganesh ji ko aarambh, buddhi aur mangal ke devta ke roop mein shraddha se smaran kiya jaata hai. Kisi shubh kaarya se pehle unka smaran karne ki parampara bahut vyaapak hai.</p><p>Pauranik kathaaon mein Mata Parvati dwaara Ganesh ji ke praakatya aur unke Shiv ji se punarmilan ki katha vishesh roop se prasiddh hai. Yeh katha mata-pita ke prati prem, kartavya aur samarpan ka bhaav prastut karti hai.</p><div class="voice-controls"><button type="button" class="voice-btn" data-voice="katha">🔊 Katha Sunein</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div></div>
 </div></div></section>
 
 <section id="krishna-radha" class="page detail" style="--glow:#788cff24;--bg1:#07091d;--bg2:#321640">
 <div class="bg"><div class="mandala"></div></div>
 <div class="detail-main"><div class="visual"><div class="aura"></div><img class="deity" src="radhakrishn.jpg" alt="Radha Krishna"></div>
-<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">प्रेम · भक्ति · अनंत</div><h1>राधा कृष्ण</h1><div class="subtitle">Divine Love · Devotion · Eternity</div>
-<div class="shlok">ॐ कृष्णाय वासुदेवाय हरये परमात्मने।<br>प्रणतः क्लेशनाशाय गोविन्दाय नमो नमः॥</div>
-<div class="mantra">राधे राधे</div>
-<p class="quote">“जहाँ प्रेम में भक्ति हो,<br>वहीं राधा-कृष्ण का वास है।”</p>
-<div class="story"><h2>राधा-कृष्ण की कथा</h2><p>श्रीकृष्ण की बाल और किशोर लीलाओं का संबंध ब्रजभूमि से जोड़ा जाता है। राधा-कृष्ण की भक्ति परंपरा में उनका संबंध दिव्य प्रेम, समर्पण और आत्मिक भक्ति का प्रतीक माना जाता है।</p><p>भक्ति साहित्य में राधा को कृष्ण के प्रति पूर्ण प्रेम और समर्पण की आदर्श भक्त के रूप में देखा जाता है। वृंदावन की परंपराओं में राधा-कृष्ण की लीलाओं का स्मरण प्रेम को आध्यात्मिक साधना से जोड़ता है।</p></div>
+<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">Prem · Bhakti · Anant</div><h1>राधा कृष्ण</h1><div class="subtitle">Divya Prem · Bhakti · Anant</div>
+<div class="shlok" data-shlok="Om Krishnaya Vasudevaya Haraye Paramatmane. Pranatah Kleshanaashaya Govindaaya Namo Namah.">Om Krishnaya Vasudevaya Haraye Paramatmane.<br>Pranatah Kleshanaashaya Govindaaya Namo Namah.</div><div class="voice-controls"><button type="button" class="voice-btn" data-voice="play">🔊 Sunein Shlok</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div>
+<div class="mantra">Radhe Radhe</div>
+<p class="quote">“Jahaan prem mein bhakti ho,<br>wahin Radha-Krishna ka vaas hai.”</p>
+<div class="story" data-katha="Radha-Krishna ki Katha Shri Krishna ki baal aur kishor leelaon ka sambandh Brajbhoomi se joda jaata hai. Radha-Krishna ki bhakti parampara mein unka sambandh divya prem, samarpan aur aatmik bhakti ka prateek maana jaata hai. Bhakti sahitya mein Radha ko Krishna ke prati poorn prem aur samarpan ki aadarsh bhakt ke roop mein dekha jaata hai. Vrindavan ki paramparaon mein Radha-Krishna ki leelaon ka smaran prem ko aadhyaatmik saadhna se jodta hai."><h2>Radha-Krishna ki Katha</h2><p>Shri Krishna ki baal aur kishor leelaon ka sambandh Brajbhoomi se joda jaata hai. Radha-Krishna ki bhakti parampara mein unka sambandh divya prem, samarpan aur aatmik bhakti ka prateek maana jaata hai.</p><p>Bhakti sahitya mein Radha ko Krishna ke prati poorn prem aur samarpan ki aadarsh bhakt ke roop mein dekha jaata hai. Vrindavan ki paramparaon mein Radha-Krishna ki leelaon ka smaran prem ko aadhyaatmik saadhna se jodta hai.</p><div class="voice-controls"><button type="button" class="voice-btn" data-voice="katha">🔊 Katha Sunein</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div></div>
 </div></div></section>
 
 <section id="mahadev-parvati" class="page detail" style="--glow:#b8d8ff20;--bg1:#07101a;--bg2:#35202e">
 <div class="bg"><div class="mandala"></div></div>
 <div class="detail-main"><div class="visual"><div class="aura"></div><img class="deity" src="mahadevparvati.jpg" alt="Mahadev and Parvati"></div>
-<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">शिव · शक्ति · सनातन</div><h1>महादेव &amp; पार्वती</h1><div class="subtitle">Shiva · Shakti · Eternal Union</div>
-<div class="shlok">ॐ नमः शिवाय<br><br>ॐ पार्वत्यै नमः</div>
-<p class="quote">“शिव बिना शक्ति अधूरे हैं,<br>और शक्ति बिना शिव।”</p><div class="mantra">ॐ</div>
-<div class="story"><h2>शिव-पार्वती की कथा</h2><p>माता पार्वती को हिमवान की पुत्री और शिव जी की सहधर्मिणी के रूप में पुराणिक परंपरा में वर्णित किया जाता है। पार्वती जी की तपस्या और शिव जी से विवाह की कथा अनेक ग्रंथों और लोकपरंपराओं में मिलती है।</p><p>शिव और शक्ति की उपासना में दोनों को चेतना और शक्ति के परस्पर पूरक रूपों के रूप में समझा जाता है। इसी कारण उनका युगल स्वरूप संतुलन, परिवार और आध्यात्मिक एकता का सुंदर प्रतीक माना जाता है।</p></div>
+<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">Shiv · Shakti · Sanaatan</div><h1>Mahadev &amp; Parvati</h1><div class="subtitle">Shiv · Shakti · Eternal Union</div>
+<div class="shlok" data-shlok="Om Namah Shivaya। Om Parvatyai Namah।">Om Namah Shivaya<br><br>Om Parvatyai Namah</div><div class="voice-controls"><button type="button" class="voice-btn" data-voice="play">🔊 Sunein Shlok</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div>
+<p class="quote">“Shiv bina Shakti adhoore hain,<br>aur Shakti bina Shiv.”</p><div class="mantra">ॐ</div>
+<div class="story" data-katha="Shiv-Parvati ki Katha Mata Parvati ko Himavan ki putri aur Shiv ji ki sahadharmini ke roop mein pauranik parampara mein varnit kiya jaata hai. Parvati ji ki tapasya aur Shiv ji se vivaah ki katha anek granthon aur lokparamparaon mein milti hai. Shiv aur Shakti ki upaasana mein dono ko chetna aur shakti ke paraspar poorak roopon ke roop mein samjha jaata hai. Isi kaaran unka yugl swaroop santulan, parivaar aur aadhyaatmik ekta ka sundar prateek maana jaata hai."><h2>Shiv-Parvati ki Katha</h2><p>Mata Parvati ko Himavan ki putri aur Shiv ji ki sahadharmini ke roop mein pauranik parampara mein varnit kiya jaata hai. Parvati ji ki tapasya aur Shiv ji se vivaah ki katha anek granthon aur lokparamparaon mein milti hai.</p><p>Shiv aur Shakti ki upaasana mein dono ko chetna aur shakti ke paraspar poorak roopon ke roop mein samjha jaata hai. Isi kaaran unka yugl swaroop santulan, parivaar aur aadhyaatmik ekta ka sundar prateek maana jaata hai.</p><div class="voice-controls"><button type="button" class="voice-btn" data-voice="katha">🔊 Katha Sunein</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div></div>
 </div></div></section>
 
 <section id="hanuman" class="page detail" style="--glow:#ffae5724;--bg1:#1d0a06;--bg2:#5a2412">
 <div class="bg"><div class="mandala"></div></div>
 <div class="detail-main"><div class="visual"><div class="aura"></div><img class="deity" src="hanuman.jpg" alt="Shri Hanuman Ji"></div>
-<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">भक्ति · शक्ति · साहस</div><h1>श्री हनुमान</h1><div class="subtitle">Devotion · Strength · Courage</div>
-<div class="shlok">मनोजवं मारुततुल्यवेगं<br>जितेन्द्रियं बुद्धिमतां वरिष्ठम्।<br>वातात्मजं वानरयूथमुख्यं<br>श्रीरामदूतं शरणं प्रपद्ये॥</div>
-<div class="mantra">ॐ हनुमते नमः</div><br><button class="action" data-message="श्री राम भक्त हनुमान जी की कृपा बनी रहे।">✦ जय श्री राम</button><div class="notice"></div>
-<div class="story"><h2>श्री हनुमान की कथा</h2><p>रामायण परंपरा में हनुमान जी को श्रीराम के महान भक्त, दूत और सहयोगी के रूप में स्मरण किया जाता है। उनकी भक्ति, साहस, विनम्रता और सेवा-भाव भारतीय भक्ति परंपरा में विशेष स्थान रखते हैं।</p><p>लंका की यात्रा, सीता जी का संदेश श्रीराम तक पहुँचाना और राम-रावण युद्ध में सहयोग करना हनुमान जी से जुड़ी प्रमुख रामायण कथाओं में शामिल हैं।</p></div>
+<div class="content"><button class="back" data-go="home">← Back to Divine Gods</button><div class="kicker">Bhakti · Shakti · Saahas</div><h1>Shri Hanuman</h1><div class="subtitle">Bhakti · Shakti · Saahas</div>
+<div class="shlok" data-shlok="Manojavam Maarutatulyavegam Jitendriyam Buddhimataam Varishtham. Vaatatmajam Vaanarayuthamukhyam Shri Ramadootam Sharanam Prapadye.">Manojavam Maarutatulyavegam<br>Jitendriyam Buddhimataam Varishtham.<br>Vaatatmajam Vaanarayuthamukhyam<br>Shri Ramadootam Sharanam Prapadye.</div><div class="voice-controls"><button type="button" class="voice-btn" data-voice="play">🔊 Sunein Shlok</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div>
+<div class="mantra">Om Hanumate Namah</div><br><button class="action" data-message="Shri Ram bhakt Hanuman ji ki kripa bani rahe.">✦ Jai Shri Ram</button><div class="notice"></div>
+<div class="story" data-katha="Shri Hanuman की कथा Ramayan parampara mein Hanuman ji ko Shri Ram ke mahaan bhakt, doot aur sahayogi ke roop mein smaran kiya jaata hai. Unki bhakti, saahas, vinamrata aur seva-bhaav Bharatiya bhakti parampara mein vishesh sthaan rakhta hai. Lanka ki yaatra, Sita ji ka sandesh Shri Ram tak pahunchaana aur Ram-Ravan yuddh mein sahayog karna Hanuman ji se judi pramukh Ramayan kathaaon mein shaamil hain."><h2>Shri Hanuman की कथा</h2><p>Ramayan parampara mein Hanuman ji ko Shri Ram ke mahaan bhakt, doot aur sahayogi ke roop mein smaran kiya jaata hai. Unki bhakti, saahas, vinamrata aur seva-bhaav Bharatiya bhakti parampara mein vishesh sthaan rakhta hai.</p><p>Lanka ki yaatra, Sita ji ka sandesh Shri Ram tak pahunchaana aur Ram-Ravan yuddh mein sahayog karna Hanuman ji se judi pramukh Ramayan kathaaon mein shaamil hain.</p><div class="voice-controls"><button type="button" class="voice-btn" data-voice="katha">🔊 Katha Sunein</button><button type="button" class="voice-btn" data-voice="stop">⏹ Rokein</button><select class="voice-speed" data-voice-speed aria-label="Voice speed"><option value="0.8">Dheema</option><option value="1" selected>Saamanya</option><option value="1.15">Tez</option></select><div class="voice-status" aria-live="polite"></div></div></div>
 </div></div></section>
 
 <script>
-const ids=["home","ganesh","krishna-radha","mahadev-parvati","hanuman"];
-function show(id,push=true){
- if(!ids.includes(id))id="home";
- document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
- if(push)history.pushState({id},"","#"+id);
- window.scrollTo(0,0);
+const PAGE_IDS = ["home","ganesh","krishna-radha","mahadev-parvati","hanuman"];
+
+function show(id, push = true) {
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  const target = PAGE_IDS.includes(id) ? id : "home";
+
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.toggle("active", page.id === target);
+  });
+
+  if (push) {
+    history.pushState({id: target}, "", "#" + target);
+  }
+
+  window.scrollTo({top: 0, left: 0, behavior: "auto"});
 }
-document.addEventListener("click",e=>{
- const el=e.target.closest("[data-go]");
- if(el)show(el.dataset.go);
- const action=e.target.closest("[data-message]");
- if(action){
-   const n=action.parentElement.querySelector(".notice");
-   n.textContent=action.dataset.message;
-   n.classList.add("show");
-   setTimeout(()=>n.classList.remove("show"),3500);
- }
+
+function goFromElement(el) {
+  if (!el) return;
+  const target = el.getAttribute("data-go");
+  if (target) show(target);
+}
+
+document.addEventListener("click", e => {
+  const navEl = e.target.closest("[data-go]");
+  if (navEl) {
+    e.preventDefault();
+    e.stopPropagation();
+    goFromElement(navEl);
+    return;
+  }
+
+  const action = e.target.closest("[data-message]");
+  if (action) {
+    const n = action.parentElement.querySelector(".notice");
+    if (n) {
+      n.textContent = action.dataset.message;
+      n.classList.add("show");
+      setTimeout(() => n.classList.remove("show"), 3500);
+    }
+  }
 });
-document.addEventListener("keydown",e=>{
- if(e.key==="Enter"&&e.target.matches(".card[data-go]"))show(e.target.dataset.go);
+
+document.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") &&
+      e.target.matches("[data-go]")) {
+    e.preventDefault();
+    goFromElement(e.target);
+  }
 });
-window.addEventListener("popstate",()=>show(location.hash.slice(1)||"home",false));
-show(location.hash.slice(1)||"home",false);
+
+window.addEventListener("popstate", () => {
+  show(location.hash.slice(1) || "home", false);
+});
+
+window.addEventListener("hashchange", () => {
+  const target = location.hash.slice(1) || "home";
+  if (PAGE_IDS.includes(target)) show(target, false);
+});
+
+show(location.hash.slice(1) || "home", false);
+
+// Sanskrit shlok voice playback using the browser's built-in Speech Synthesis API.
+const synth = window.speechSynthesis;
+let activeUtterance = null;
+
+function pickSanskritVoice() {
+  const voices = synth.getVoices ? synth.getVoices() : [];
+  return voices.find(v => /^hi(?:-|$)/i.test(v.lang)) ||
+         voices.find(v => /^en-IN/i.test(v.lang)) ||
+         voices.find(v => /^sa(?:-|$)/i.test(v.lang)) ||
+         voices.find(v => /^en/i.test(v.lang)) ||
+         null;
+}
+
+function setVoiceStatus(container, text) {
+  const status = container.querySelector(".voice-status");
+  if (status) status.textContent = text;
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-voice]");
+  if (!btn) return;
+
+  const controls = btn.closest(".voice-controls");
+  const shlok = controls ? controls.closest(".detail")?.querySelector(".shlok") : null;
+  const story = controls ? controls.closest(".story") : null;
+
+  if (!("speechSynthesis" in window)) {
+    setVoiceStatus(controls, "Is browser mein voice playback available nahi hai.");
+    return;
+  }
+
+  if (btn.dataset.voice === "stop") {
+    synth.cancel();
+    activeUtterance = null;
+    document.querySelectorAll(".voice-status").forEach(s => {
+      s.textContent = "";
+    });
+    setVoiceStatus(controls, "Playback rok diya gaya.");
+    return;
+  }
+
+  synth.cancel();
+
+  const isKatha = btn.dataset.voice === "katha";
+  const sourceText = isKatha
+    ? story?.dataset.katha
+    : shlok?.dataset.shlok;
+
+  if (!sourceText) {
+    setVoiceStatus(controls, "Is section ka audio text available nahi hai.");
+    return;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(sourceText);
+  utterance.lang = "hi-IN";
+  utterance.rate = parseFloat(
+    controls.querySelector("[data-voice-speed]")?.value || "1"
+  );
+  utterance.pitch = 0.9;
+
+  const voice = pickSanskritVoice();
+  if (voice) utterance.voice = voice;
+
+  utterance.onstart = () => {
+    document.querySelectorAll(".voice-status").forEach(s => {
+      if (s !== controls.querySelector(".voice-status")) s.textContent = "";
+    });
+    setVoiceStatus(controls, isKatha ? "🔊 Katha chal rahi hai…" : "🔊 Shlok chal raha hai…");
+  };
+
+  utterance.onend = () => {
+    setVoiceStatus(controls, isKatha ? "✓ Katha poori hui" : "✓ Shlok poora hua");
+    activeUtterance = null;
+  };
+
+  utterance.onerror = () => {
+    setVoiceStatus(controls, "Voice playback shuru nahi ho saka.");
+    activeUtterance = null;
+  };
+
+  activeUtterance = utterance;
+  synth.speak(utterance);
+});
+
+if ("speechSynthesis" in window) {
+  synth.onvoiceschanged = () => synth.getVoices();
+}
+
 </script>
 </body>
 </html>
